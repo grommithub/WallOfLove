@@ -16,7 +16,7 @@ consumer.subscriptions.create("MessagesChannel", {
       const messageContainer = document.createElement("div");
       messageContainer.style = "margin-bottom:20px; background: turquoise; padding: 5px"
       const timeContainer = document.createElement("small");
-      timeContainer.innerText= data.created_at.in_time_zone("Stockholm").strftime("%B %d, %Y %I:%M %p");
+      timeContainer.innerText= data.created_at
       //
       messageContainer.appendChild(timeContainer);
       const messageElement = document.createElement("p");
