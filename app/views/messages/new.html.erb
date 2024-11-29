@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
       
       <div id="messages">
   <% @messages.each do |message| %>
-    <div style="margin-bottom:20px; background: turquoise; padding: 5px">
+    <div style="margin-bottom:20px; background: powderblue; padding: 5px">
       <small style="padding:0">
         <%= message.created_at.in_time_zone("Stockholm").strftime("%B %d, %Y %I:%M %p") %>
       </small>

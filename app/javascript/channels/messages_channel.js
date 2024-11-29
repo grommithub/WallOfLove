@@ -14,7 +14,7 @@ consumer.subscriptions.create("MessagesChannel", {
       // Handle incoming broadcasted data
       const messagesContainer = document.getElementById("messages");
       const messageContainer = document.createElement("div");
-      messageContainer.style = "margin-bottom:20px; background: turquoise; padding: 5px"
+      messageContainer.style = "margin-bottom:20px; background: powderblue; padding: 5px"
       const timeContainer = document.createElement("small");
       timeContainer.innerText= data.created_at
       //
