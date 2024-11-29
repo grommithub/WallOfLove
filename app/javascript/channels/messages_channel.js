@@ -2,7 +2,7 @@ import consumer from "channels/consumer"
 
 consumer.subscriptions.create("MessagesChannel", {
   connected() {
-    // Called when the subscription is ready for use on the server
+    console.log("Connected")
   },
 
   disconnected() {
@@ -10,6 +10,28 @@ consumer.subscriptions.create("MessagesChannel", {
   },
 
   received(data) {
-    // Called when there's incoming data on the websocket for this channel
+    console.log("Got a message here!")
+      // Handle incoming broadcasted data
+      const messagesContainer = document.getElementById("messages");
+      const messageContainer = document.createElement("div");
+      messageContainer.style = "margin-bottom:20px; background: turquoise; padding: 5px"
+      const timeContainer = document.createElement("small");
+      timeContainer.innerText= data.created_at.in_time_zone("Stockholm").strftime("%B %d, %Y %I:%M %p");
+      //
+      messageContainer.appendChild(timeContainer);
+      const messageElement = document.createElement("p");
+      messageElement.innerText = `${data.body}`;
+      messageContainer.appendChild(messageElement)
+
+      // <div style="margin-bottom:20px; background: turquoise; padding: 5px">
+      // <small style="padding:0">
+      //   <%= message.created_at.in_time_zone("Stockholm").strftime("%B %d, %Y %I:%M %p") %>
+      // </small>
+      // <p style="padding-left: 5px">
+      //   <%= message.body %>
+      // </p>
+      
+      messagesContainer.appendChild(messageContainer);
+
   }
 });

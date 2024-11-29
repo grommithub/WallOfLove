@@ -27,6 +27,7 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
+        puts "print print print!"
         ActionCable.server.broadcast "messages_channel", {
         body: @message.body,
         created_at: @message.created_at

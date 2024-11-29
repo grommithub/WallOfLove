@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   root "messages#index"
 
   resources :articles
+
+  mount ActionCable.server => '/cable'
 end
