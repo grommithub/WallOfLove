@@ -23,14 +23,6 @@ consumer.subscriptions.create("MessagesChannel", {
       messageElement.innerText = `${data.body}`;
       messageContainer.appendChild(messageElement)
 
-      // <div style="margin-bottom:20px; background: turquoise; padding: 5px">
-      // <small style="padding:0">
-      //   <%= message.created_at.in_time_zone("Stockholm").strftime("%B %d, %Y %I:%M %p") %>
-      // </small>
-      // <p style="padding-left: 5px">
-      //   <%= message.body %>
-      // </p>
-      
       messagesContainer.appendChild(messageContainer);
 
   }

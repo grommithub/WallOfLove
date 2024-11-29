@@ -30,7 +30,7 @@ class MessagesController < ApplicationController
         puts "print print print!"
         ActionCable.server.broadcast "messages_channel", {
         body: @message.body,
-        created_at: @message.created_at
+        created_at: @message.created_at.in_time_zone("Stockholm").strftime("%B %d, %Y %I:%M %p")
       }
       head :ok
         # format.html { redirect_to @message, notice: "Message was successfully created." }

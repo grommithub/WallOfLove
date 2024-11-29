@@ -5,7 +5,7 @@ import { createConsumer } from "@rails/actioncable";
 document.addEventListener("DOMContentLoaded", function () {
   window.scrollTo(0, document.body.scrollHeight);
   
-  const consumer = createConsumer(ws://localhost:3000/cable);
+  const consumer = createConsumer();
   
   consumer.subscriptions.create("MessagesChannel", {
     received(data) {
