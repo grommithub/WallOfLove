@@ -1,50 +1,37 @@
 
 <script>
-import { createConsumer } from "@rails/actioncable";
+  import { createConsumer } from "@rails/actioncable";
 
-document.addEventListener("DOMContentLoaded", function () {
-  window.scrollTo(0, document.body.scrollHeight);
+  document.addEventListener("DOMContentLoaded", function () {
+    window.scrollTo(0, document.body.scrollHeight);
+    const consumer = createConsumer();
+    consumer.subscriptions.create("MessagesChannel", {
+     received(data) {
+        received(data);
+    });
+  </script>
   
-  const consumer = createConsumer();
-  
-  consumer.subscriptions.create("MessagesChannel", {
-    received(data) {
-      received(data);
-  
-
-  });
-  
-  
-  
-
-  
-      
-      </script>
-      
-      <% content_for :title, "New message" %>
-
-      <h1 class="text-3xl font-bold underline">
-    Hello world!
-</h1>
-<button class="btn">Button</button>
-      
-      <div id="messages">
-  <% @messages.each do |message| %>
-    <div style="margin-bottom:20px; background: powderblue; padding: 5px">
-      <small style="padding:0" class="text-yellow-600">
-        <%= message.created_at.in_time_zone("Stockholm").strftime("%B %d, %Y %I:%M %p") %>
-      </small>
-      <p style="padding-left: 5px">
-        <%= message.body %>
-      </p>
-    </div>
-  <% end %>
-</div>
-
-<%= render "form", message: @message %>
-
-<br>
-
 <div>
-  <%= link_to "Back to messages", messages_path %>
-</div>
+  <small class="text-s opacity-75">Daniel Burt's</small>
+  <h1 class="text-3xl font-bold">Wall of <span class="text-red-500">Love<span></h1>
+        
+
+  <div class="join join-vertical" id="messages">
+    <% @messages.each do |message| %>
+      <div class="card card-body card-compact bg-accent-content w-96 shadow-xl join-item p-5">
+        <time class="text-xs opacity-50"><%= message.created_at.in_time_zone("Stockholm").strftime("%B %d, %Y %I:%M %p") %></time>
+        </time>
+          <p class="text-3xl">
+            <%= message.body %>
+          </p>
+      </div>
+    <% end %>
+  </div>
+
+  <%= render "form", message: @message %>
+
+
+  <div>
+    <%= link_to "Back to messages", messages_path %>
+  </div>
+</div
