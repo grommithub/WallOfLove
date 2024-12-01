@@ -29,8 +29,10 @@ class MessagesController < ApplicationController
       if @message.save
         puts "print print print!"
         ActionCable.server.broadcast "messages_channel", {
-        body: @message.body,
-        created_at: @message.created_at.in_time_zone("Stockholm").strftime("%B %d, %Y %I:%M %p")
+          html: ApplicationController.renderer.render(
+            partial: 'messages/message',
+            locals: { message: @message }
+          )
       }
       head :ok
         # format.html { redirect_to @message, notice: "Message was successfully created." }
