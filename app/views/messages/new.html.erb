@@ -12,18 +12,15 @@
   </script>
 
 <div>
-  <small class="text-s opacity-75">Daniel Burt's</small>
+  <small class="text-s opacity-50">Daniel Burt's</small>
   <h1 class="text-3xl font-bold">Wall of <span class="text-red-500">Love<span></h1>
         
-  <div class="bg-base-300 card shadow-xl">
+  <div class="bg-base-300 card shadow-xl my-5">
     <div class="grid grid-flow-row grid-cols-3 w-full" id="messages">
       <%= render @messages %>
     </div>
   </div>
+
   <%= render "form", message: @message %>
 
-
-  <div>
-    <%= link_to "Back to messages", messages_path %>
-  </div>
 </div
