@@ -1,7 +1,7 @@
-<div id="<%= dom_id message %>">
-  <p>
-    <strong>Body:</strong>
+<!-- app/views/messages/_message.html.erb -->
+<div class="card card-body card-compact bg-base-100 w-96 shadow-l  p-5 m-5" id="<%= dom_id message %>">
+  <time class="text-xs opacity-50"><%= message.created_at.in_time_zone("Stockholm").strftime("%B %d, %Y %I:%M %p") %></time>
+  <p class="text-3xl">
     <%= message.body %>
   </p>
-
 </div>

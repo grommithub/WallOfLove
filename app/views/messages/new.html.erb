@@ -10,24 +10,16 @@
         received(data);
     });
   </script>
-  
+
 <div>
   <small class="text-s opacity-75">Daniel Burt's</small>
   <h1 class="text-3xl font-bold">Wall of <span class="text-red-500">Love<span></h1>
         
-
-  <div class="join join-vertical" id="messages">
-    <% @messages.each do |message| %>
-      <div class="card card-body card-compact bg-accent-content w-96 shadow-xl join-item p-5">
-        <time class="text-xs opacity-50"><%= message.created_at.in_time_zone("Stockholm").strftime("%B %d, %Y %I:%M %p") %></time>
-        </time>
-          <p class="text-3xl">
-            <%= message.body %>
-          </p>
-      </div>
-    <% end %>
+  <div class="bg-base-300 card shadow-xl">
+    <div class="grid grid-flow-row grid-cols-3 w-full" id="messages">
+      <%= render @messages %>
+    </div>
   </div>
-
   <%= render "form", message: @message %>
 
 
