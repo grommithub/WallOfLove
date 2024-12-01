@@ -22,11 +22,15 @@ document.addEventListener("DOMContentLoaded", function () {
       </script>
       
       <% content_for :title, "New message" %>
+
+      <h1 class="text-3xl font-bold underline">
+    Hello world!
+</h1>
       
       <div id="messages">
   <% @messages.each do |message| %>
     <div style="margin-bottom:20px; background: powderblue; padding: 5px">
-      <small style="padding:0">
+      <small style="padding:0" class="text-yellow-600">
         <%= message.created_at.in_time_zone("Stockholm").strftime("%B %d, %Y %I:%M %p") %>
       </small>
       <p style="padding-left: 5px">
