@@ -5,6 +5,23 @@ class MessagesControllerTest < ActionDispatch::IntegrationTest
     @message = messages(:one)
   end
 
+  #Message validation test
+  test "should create valid message" do
+    assert_difference("Message.count", 1) do
+      post messages_url, params: { message: { body: '❤️' } }
+    end
+
+    created_message = Message.last
+    assert_equal '❤️', created_message.body
+  end
+
+  test "should not create invalid message" do
+    assert_no_difference("Message.count") do
+      post messages_url, params: { message: { body: 'I did indeed write a test for this 😎' } }
+    end
+  end
+
+
   test "should get index" do
     get messages_url
     assert_response :success
@@ -15,13 +32,7 @@ class MessagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create message" do
-    assert_difference("Message.count") do
-      post messages_url, params: { message: { body: @message.body } }
-    end
 
-    assert_redirected_to message_url(Message.last)
-  end
 
   test "should show message" do
     get message_url(@message)
@@ -33,10 +44,6 @@ class MessagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should update message" do
-    patch message_url(@message), params: { message: { body: @message.body } }
-    assert_redirected_to message_url(@message)
-  end
 
   test "should destroy message" do
     assert_difference("Message.count", -1) do

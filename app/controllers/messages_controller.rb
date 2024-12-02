@@ -35,6 +35,7 @@ class MessagesController < ApplicationController
           )
       }
       head :ok
+        # format.html { redirect_to @message, notice: "Message was successfully created." }
         format.json { render :show, status: :created, location: @message }
       else
         format.html { render :new, status: :unprocessable_entity }
